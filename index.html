@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpendWise</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #eee;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>💸 SpendWise</h2>
+
+    <input type="text" id="desc" placeholder="Enter expense">
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <button onclick="addExpense()">Add Expense</button>
+
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <ul id="list"></ul>
+</div>
+
+<script>
+    let total = 0;
+
+    function addExpense() {
+        let desc = document.getElementById("desc").value;
+        let amount = document.getElementById("amount").value;
+
+        if(desc === "" || amount === "") {
+            alert("Fill all fields!");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent = desc + " - ₹" + amount;
+
+        document.getElementById("list").appendChild(li);
+
+        total += parseInt(amount);
+        document.getElementById("total").textContent = total;
+
+        document.getElementById("desc").value = "";
+        document.getElementById("amount").value = "";
+    }
+</script>
+
+</body>
+</html>
